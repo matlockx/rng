@@ -12,14 +12,14 @@ import akka.util.Timeout
 object Main extends App {
 
 
-  implicit val system = ActorSystem("oderable")
+  implicit val system = ActorSystem("rng")
 
   val serviceActor = system.actorOf(Props(new RestRouting), name = "rest-routing")
 
   system.registerOnTermination {
     system.log.info("Actor per request demo shutdown.")
   }
-  IO(Http) ! Http.Bind(serviceActor, "localhost", port = 38080)
+  IO(Http) ! Http.Bind(serviceActor, args(0), port = 38080)
 
 }
 
