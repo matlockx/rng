@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="default"
+		module="oderable$sources_javadoc_2.10"
+		revision="1.0"
+		conf="runtime"
+		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
+		date="20140614121355"/>
+	<dependencies>
+		<module organisation="org.apache.commons" name="commons-math3">
+			<revision name="3.3" status="release" pubdate="20140507224835" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://commons.apache.org/proper/commons-math/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="24">
+				<metadata-artifact status="no" details="" size="10794" time="0" location="/Users/m.joehren/.ivy2/cache/org.apache.commons/commons-math3/ivy-3.3.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/apache/commons/commons-math3/3.3/commons-math3-3.3.pom"/>
+				<caller organisation="default" name="oderable$sources_javadoc_2.10" conf="compile, runtime" rev="3.3" rev-constraint-default="3.3" rev-constraint-dynamic="3.3" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="commons-math3" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="2288342" time="0" location="/Users/m.joehren/.ivy2/cache/org.apache.commons/commons-math3/srcs/commons-math3-3.3-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/apache/commons/commons-math3/3.3/commons-math3-3.3-sources.jar"/>
+					</artifact>
+					<artifact name="commons-math3" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="6221375" time="0" location="/Users/m.joehren/.ivy2/cache/org.apache.commons/commons-math3/docs/commons-math3-3.3-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/apache/commons/commons-math3/3.3/commons-math3-3.3-javadoc.jar"/>
+					</artifact>
+					<artifact name="commons-math3" type="jar" ext="jar" status="no" details="" size="1952352" time="0" location="/Users/m.joehren/.ivy2/cache/org.apache.commons/commons-math3/jars/commons-math3-3.3.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/apache/commons/commons-math3/3.3/commons-math3-3.3.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.json4s" name="json4s-native_2.10">
+			<revision name="3.2.6" status="release" pubdate="20131201074750" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/json4s/json4s" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="17">
+				<license name="ASL" url="http://github.com/json4s/json4s/raw/HEAD/LICENSE"/>
+				<metadata-artifact status="no" details="" size="2663" time="0" location="/Users/m.joehren/.ivy2/cache/org.json4s/json4s-native_2.10/ivy-3.2.6.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/json4s/json4s-native_2.10/3.2.6/json4s-native_2.10-3.2.6.pom"/>
+				<caller organisation="default" name="oderable$sources_javadoc_2.10" conf="compile, runtime" rev="3.2.6" rev-constraint-default="3.2.6" rev-constraint-dynamic="3.2.6" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="json4s-native_2.10" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="430378" time="0" location="/Users/m.joehren/.ivy2/cache/org.json4s/json4s-native_2.10/docs/json4s-native_2.10-3.2.6-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/json4s/json4s-native_2.10/3.2.6/json4s-native_2.10-3.2.6-javadoc.jar"/>
+					</artifact>
+					<artifact name="json4s-native_2.10" type="jar" ext="jar" status="no" details="" size="68735" time="0" location="/Users/m.joehren/.ivy2/cache/org.json4s/json4s-native_2.10/jars/json4s-native_2.10-3.2.6.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/json4s/json4s-native_2.10/3.2.6/json4s-native_2.10-3.2.6.jar"/>
+					</artifact>
+					<artifact name="json4s-native_2.10" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="7356" time="0" location="/Users/m.joehren/.ivy2/cache/org.json4s/json4s-native_2.10/srcs/json4s-native_2.10-3.2.6-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/json4s/json4s-native_2.10/3.2.6/json4s-native_2.10-3.2.6-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.json4s" name="json4s-core_2.10">
+			<revision name="3.2.6" status="release" pubdate="20131201074736" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/json4s/json4s" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="18">
+				<license name="ASL" url="http://github.com/json4s/json4s/raw/HEAD/LICENSE"/>
+				<metadata-artifact status="no" details="" size="2936" time="0" location="/Users/m.joehren/.ivy2/cache/org.json4s/json4s-core_2.10/ivy-3.2.6.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/json4s/json4s-core_2.10/3.2.6/json4s-core_2.10-3.2.6.pom"/>
+				<caller organisation="default" name="oderable$sources_javadoc_2.10" conf="compile, runtime" rev="3.2.6" rev-constraint-default="3.2.6" rev-constraint-dynamic="3.2.6" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="json4s-core_2.10" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="37568" time="0" location="/Users/m.joehren/.ivy2/cache/org.json4s/json4s-core_2.10/srcs/json4s-core_2.10-3.2.6-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/json4s/json4s-core_2.10/3.2.6/json4s-core_2.10-3.2.6-sources.jar"/>
+					</artifact>
+					<artifact name="json4s-core_2.10" type="jar" ext="jar" status="no" details="" size="579141" time="0" location="/Users/m.joehren/.ivy2/cache/org.json4s/json4s-core_2.10/jars/json4s-core_2.10-3.2.6.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/json4s/json4s-core_2.10/3.2.6/json4s-core_2.10-3.2.6.jar"/>
+					</artifact>
+					<artifact name="json4s-core_2.10" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="688383" time="0" location="/Users/m.joehren/.ivy2/cache/org.json4s/json4s-core_2.10/docs/json4s-core_2.10-3.2.6-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/json4s/json4s-core_2.10/3.2.6/json4s-core_2.10-3.2.6-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scalap">
+			<revision name="2.10.0" status="release" pubdate="20121220083017" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="21">
+				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html    "/>
+				<metadata-artifact status="no" details="" size="2518" time="0" location="/Users/m.joehren/.ivy2/cache/org.scala-lang/scalap/ivy-2.10.0.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/scala-lang/scalap/2.10.0/scalap-2.10.0.pom"/>
+				<caller organisation="default" name="oderable$sources_javadoc_2.10" conf="compile, runtime" rev="2.10.0" rev-constraint-default="2.10.0" rev-constraint-dynamic="2.10.0" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="scalap" type="jar" ext="jar" status="no" details="" size="855012" time="0" location="/Users/m.joehren/.ivy2/cache/org.scala-lang/scalap/jars/scalap-2.10.0.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/scala-lang/scalap/2.10.0/scalap-2.10.0.jar"/>
+					</artifact>
+					<artifact name="scalap" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="40814" time="0" location="/Users/m.joehren/.ivy2/cache/org.scala-lang/scalap/srcs/scalap-2.10.0-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/scala-lang/scalap/2.10.0/scalap-2.10.0-sources.jar"/>
+					</artifact>
+					<artifact name="scalap" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="1234075" time="0" location="/Users/m.joehren/.ivy2/cache/org.scala-lang/scalap/docs/scalap-2.10.0-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/scala-lang/scalap/2.10.0/scalap-2.10.0-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-compiler">
+			<revision name="2.10.0" status="release" pubdate="20121220082948" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="22">
+				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html    "/>
+				<metadata-artifact status="no" details="" size="2809" time="0" location="/Users/m.joehren/.ivy2/cache/org.scala-lang/scala-compiler/ivy-2.10.0.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.10.0/scala-compiler-2.10.0.pom"/>
+				<caller organisation="default" name="oderable$sources_javadoc_2.10" conf="compile, runtime" rev="2.10.0" rev-constraint-default="2.10.0" rev-constraint-dynamic="2.10.0" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="scala-compiler" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="2007189" time="0" location="/Users/m.joehren/.ivy2/cache/org.scala-lang/scala-compiler/srcs/scala-compiler-2.10.0-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.10.0/scala-compiler-2.10.0-sources.jar"/>
+					</artifact>
+					<artifact name="scala-compiler" type="jar" ext="jar" status="no" details="" size="14149435" time="0" location="/Users/m.joehren/.ivy2/cache/org.scala-lang/scala-compiler/jars/scala-compiler-2.10.0.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.10.0/scala-compiler-2.10.0.jar"/>
+					</artifact>
+					<artifact name="scala-compiler" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="12021231" time="0" location="/Users/m.joehren/.ivy2/cache/org.scala-lang/scala-compiler/docs/scala-compiler-2.10.0-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.10.0/scala-compiler-2.10.0-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-reflect">
+			<revision name="2.10.0" status="release" pubdate="20121220082932" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="23">
+				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html    "/>
+				<metadata-artifact status="no" details="" size="2552" time="0" location="/Users/m.joehren/.ivy2/cache/org.scala-lang/scala-reflect/ivy-2.10.0.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.10.0/scala-reflect-2.10.0.pom"/>
+				<caller organisation="default" name="oderable$sources_javadoc_2.10" conf="compile, runtime" rev="2.10.0" rev-constraint-default="2.10.0" rev-constraint-dynamic="2.10.0" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="scala-reflect" type="jar" ext="jar" status="no" details="" size="3149351" time="0" location="/Users/m.joehren/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.10.0.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.10.0/scala-reflect-2.10.0.jar"/>
+					</artifact>
+					<artifact name="scala-reflect" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="418349" time="0" location="/Users/m.joehren/.ivy2/cache/org.scala-lang/scala-reflect/srcs/scala-reflect-2.10.0-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.10.0/scala-reflect-2.10.0-sources.jar"/>
+					</artifact>
+					<artifact name="scala-reflect" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="33515231" time="0" location="/Users/m.joehren/.ivy2/cache/org.scala-lang/scala-reflect/docs/scala-reflect-2.10.0-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.10.0/scala-reflect-2.10.0-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.thoughtworks.paranamer" name="paranamer">
+			<revision name="2.6" status="release" pubdate="20131009055654" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="20">
+				<metadata-artifact status="no" details="" size="4051" time="0" location="/Users/m.joehren/.ivy2/cache/com.thoughtworks.paranamer/paranamer/ivy-2.6.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/com/thoughtworks/paranamer/paranamer/2.6/paranamer-2.6.pom"/>
+				<caller organisation="default" name="oderable$sources_javadoc_2.10" conf="compile, runtime" rev="2.6" rev-constraint-default="2.6" rev-constraint-dynamic="2.6" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="paranamer" type="jar" ext="jar" status="no" details="" size="32806" time="0" location="/Users/m.joehren/.ivy2/cache/com.thoughtworks.paranamer/paranamer/jars/paranamer-2.6.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/thoughtworks/paranamer/paranamer/2.6/paranamer-2.6.jar"/>
+					</artifact>
+					<artifact name="paranamer" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="90529" time="0" location="/Users/m.joehren/.ivy2/cache/com.thoughtworks.paranamer/paranamer/docs/paranamer-2.6-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/thoughtworks/paranamer/paranamer/2.6/paranamer-2.6-javadoc.jar"/>
+					</artifact>
+					<artifact name="paranamer" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="26517" time="0" location="/Users/m.joehren/.ivy2/cache/com.thoughtworks.paranamer/paranamer/srcs/paranamer-2.6-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/thoughtworks/paranamer/paranamer/2.6/paranamer-2.6-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.json4s" name="json4s-ast_2.10">
+			<revision name="3.2.6" status="release" pubdate="20131201074712" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/json4s/json4s" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="19">
+				<license name="ASL" url="http://github.com/json4s/json4s/raw/HEAD/LICENSE"/>
+				<metadata-artifact status="no" details="" size="2515" time="0" location="/Users/m.joehren/.ivy2/cache/org.json4s/json4s-ast_2.10/ivy-3.2.6.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/json4s/json4s-ast_2.10/3.2.6/json4s-ast_2.10-3.2.6.pom"/>
+				<caller organisation="default" name="oderable$sources_javadoc_2.10" conf="compile, runtime" rev="3.2.6" rev-constraint-default="3.2.6" rev-constraint-dynamic="3.2.6" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="json4s-ast_2.10" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="455719" time="0" location="/Users/m.joehren/.ivy2/cache/org.json4s/json4s-ast_2.10/docs/json4s-ast_2.10-3.2.6-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/json4s/json4s-ast_2.10/3.2.6/json4s-ast_2.10-3.2.6-javadoc.jar"/>
+					</artifact>
+					<artifact name="json4s-ast_2.10" type="jar" ext="jar" status="no" details="" size="87285" time="0" location="/Users/m.joehren/.ivy2/cache/org.json4s/json4s-ast_2.10/jars/json4s-ast_2.10-3.2.6.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/json4s/json4s-ast_2.10/3.2.6/json4s-ast_2.10-3.2.6.jar"/>
+					</artifact>
+					<artifact name="json4s-ast_2.10" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="7547" time="0" location="/Users/m.joehren/.ivy2/cache/org.json4s/json4s-ast_2.10/srcs/json4s-ast_2.10-3.2.6-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/json4s/json4s-ast_2.10/3.2.6/json4s-ast_2.10-3.2.6-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.spray" name="spray-routing">
+			<revision name="1.2.0" status="release" pubdate="20131213162939" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://spray.io" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="14">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="3541" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-routing/ivy-1.2.0.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/io/spray/spray-routing/1.2.0/spray-routing-1.2.0.pom"/>
+				<caller organisation="default" name="oderable$sources_javadoc_2.10" conf="compile, runtime" rev="1.2.0" rev-constraint-default="1.2.0" rev-constraint-dynamic="1.2.0" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="spray-routing" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="73955" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-routing/srcs/spray-routing-1.2.0-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/io/spray/spray-routing/1.2.0/spray-routing-1.2.0-sources.jar"/>
+					</artifact>
+					<artifact name="spray-routing" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="1211319" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-routing/docs/spray-routing-1.2.0-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/io/spray/spray-routing/1.2.0/spray-routing-1.2.0-javadoc.jar"/>
+					</artifact>
+					<artifact name="spray-routing" type="jar" ext="jar" status="no" details="" size="1027828" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-routing/jars/spray-routing-1.2.0.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/io/spray/spray-routing/1.2.0/spray-routing-1.2.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.chuusai" name="shapeless_2.10">
+			<revision name="1.2.4" status="release" pubdate="20130226205121" resolver="public" artresolver="public" homepage="https://github.com/milessabin/shapeless" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="15">
+				<license name="Apache License" url="http://www.apache.org/licenses/"/>
+				<metadata-artifact status="no" details="" size="2634" time="0" location="/Users/m.joehren/.ivy2/cache/com.chuusai/shapeless_2.10/ivy-1.2.4.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/com/chuusai/shapeless_2.10/1.2.4/shapeless_2.10-1.2.4.pom"/>
+				<caller organisation="default" name="oderable$sources_javadoc_2.10" conf="compile, runtime" rev="1.2.4" rev-constraint-default="1.2.4" rev-constraint-dynamic="1.2.4" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="shapeless_2.10" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="74241" time="0" location="/Users/m.joehren/.ivy2/cache/com.chuusai/shapeless_2.10/srcs/shapeless_2.10-1.2.4-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/chuusai/shapeless_2.10/1.2.4/shapeless_2.10-1.2.4-sources.jar"/>
+					</artifact>
+					<artifact name="shapeless_2.10" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="1560847" time="0" location="/Users/m.joehren/.ivy2/cache/com.chuusai/shapeless_2.10/docs/shapeless_2.10-1.2.4-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/chuusai/shapeless_2.10/1.2.4/shapeless_2.10-1.2.4-javadoc.jar"/>
+					</artifact>
+					<artifact name="shapeless_2.10" type="jar" ext="jar" status="no" details="" size="1280423" time="0" location="/Users/m.joehren/.ivy2/cache/com.chuusai/shapeless_2.10/jars/shapeless_2.10-1.2.4.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/chuusai/shapeless_2.10/1.2.4/shapeless_2.10-1.2.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.spray" name="spray-client">
+			<revision name="1.2.0" status="release" pubdate="20131213163153" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://spray.io" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="13">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="3494" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-client/ivy-1.2.0.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/io/spray/spray-client/1.2.0/spray-client-1.2.0.pom"/>
+				<caller organisation="default" name="oderable$sources_javadoc_2.10" conf="compile, runtime" rev="1.2.0" rev-constraint-default="1.2.0" rev-constraint-dynamic="1.2.0" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="spray-client" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="3908" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-client/srcs/spray-client-1.2.0-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/io/spray/spray-client/1.2.0/spray-client-1.2.0-sources.jar"/>
+					</artifact>
+					<artifact name="spray-client" type="jar" ext="jar" status="no" details="" size="44966" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-client/jars/spray-client-1.2.0.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/io/spray/spray-client/1.2.0/spray-client-1.2.0.jar"/>
+					</artifact>
+					<artifact name="spray-client" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="383100" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-client/docs/spray-client-1.2.0-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/io/spray/spray-client/1.2.0/spray-client-1.2.0-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.spray" name="spray-httpx">
+			<revision name="1.2.0" status="release" pubdate="20131213163101" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://spray.io" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="11">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="4105" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-httpx/ivy-1.2.0.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/io/spray/spray-httpx/1.2.0/spray-httpx-1.2.0.pom"/>
+				<caller organisation="default" name="oderable$sources_javadoc_2.10" conf="compile, runtime" rev="1.2.0" rev-constraint-default="1.2.0" rev-constraint-dynamic="1.2.0" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="spray-httpx" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="43983" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-httpx/srcs/spray-httpx-1.2.0-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/io/spray/spray-httpx/1.2.0/spray-httpx-1.2.0-sources.jar"/>
+					</artifact>
+					<artifact name="spray-httpx" type="jar" ext="jar" status="no" details="" size="456464" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-httpx/jars/spray-httpx-1.2.0.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/io/spray/spray-httpx/1.2.0/spray-httpx-1.2.0.jar"/>
+					</artifact>
+					<artifact name="spray-httpx" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="707649" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-httpx/docs/spray-httpx-1.2.0-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/io/spray/spray-httpx/1.2.0/spray-httpx-1.2.0-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.spray" name="spray-json_2.10">
+			<revision name="1.2.5" status="release" pubdate="20130531122503" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/spray/spray-json" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="16">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="2826" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-json_2.10/ivy-1.2.5.xml" searched="false" origin-is-local="false" origin-location="http://repo.spray.io/io/spray/spray-json_2.10/1.2.5/spray-json_2.10-1.2.5.pom"/>
+				<caller organisation="default" name="oderable$sources_javadoc_2.10" conf="compile, runtime" rev="1.2.5" rev-constraint-default="1.2.5" rev-constraint-dynamic="1.2.5" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="spray-json_2.10" type="jar" ext="jar" status="no" details="" size="321503" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-json_2.10/jars/spray-json_2.10-1.2.5.jar">
+						<origin-location is-local="false" location="http://repo.spray.io/io/spray/spray-json_2.10/1.2.5/spray-json_2.10-1.2.5.jar"/>
+					</artifact>
+					<artifact name="spray-json_2.10" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="19766" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-json_2.10/srcs/spray-json_2.10-1.2.5-sources.jar">
+						<origin-location is-local="false" location="http://repo.spray.io/io/spray/spray-json_2.10/1.2.5/spray-json_2.10-1.2.5-sources.jar"/>
+					</artifact>
+					<artifact name="spray-json_2.10" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="604075" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-json_2.10/docs/spray-json_2.10-1.2.5-javadoc.jar">
+						<origin-location is-local="false" location="http://repo.spray.io/io/spray/spray-json_2.10/1.2.5/spray-json_2.10-1.2.5-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.jvnet.mimepull" name="mimepull">
+			<revision name="1.9.3" status="release" pubdate="20130419114423" resolver="public" artresolver="public" homepage="http://mimepull.java.net" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="12">
+				<license name="CDDL 1.1" url="https://glassfish.java.net/public/CDDL+GPL_1_1.html"/>
+				<license name="GPL2 w/ CPE" url="https://glassfish.java.net/public/CDDL+GPL_1_1.html"/>
+				<metadata-artifact status="no" details="" size="3786" time="0" location="/Users/m.joehren/.ivy2/cache/org.jvnet.mimepull/mimepull/ivy-1.9.3.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/jvnet/mimepull/mimepull/1.9.3/mimepull-1.9.3.pom"/>
+				<caller organisation="default" name="oderable$sources_javadoc_2.10" conf="compile, runtime" rev="1.9.3" rev-constraint-default="1.9.3" rev-constraint-dynamic="1.9.3" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="mimepull" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="67530" time="0" location="/Users/m.joehren/.ivy2/cache/org.jvnet.mimepull/mimepull/srcs/mimepull-1.9.3-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/jvnet/mimepull/mimepull/1.9.3/mimepull-1.9.3-sources.jar"/>
+					</artifact>
+					<artifact name="mimepull" type="jar" ext="jar" status="no" details="" size="62135" time="0" location="/Users/m.joehren/.ivy2/cache/org.jvnet.mimepull/mimepull/jars/mimepull-1.9.3.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/jvnet/mimepull/mimepull/1.9.3/mimepull-1.9.3.jar"/>
+					</artifact>
+					<artifact name="mimepull" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="53506" time="0" location="/Users/m.joehren/.ivy2/cache/org.jvnet.mimepull/mimepull/docs/mimepull-1.9.3-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/jvnet/mimepull/mimepull/1.9.3/mimepull-1.9.3-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.spray" name="spray-can">
+			<revision name="1.2.0" status="release" pubdate="20131213162854" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://spray.io" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="4">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="3355" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-can/ivy-1.2.0.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/io/spray/spray-can/1.2.0/spray-can-1.2.0.pom"/>
+				<caller organisation="default" name="oderable$sources_javadoc_2.10" conf="compile, runtime" rev="1.2.0" rev-constraint-default="1.2.0" rev-constraint-dynamic="1.2.0" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="spray-can" type="jar" ext="jar" status="no" details="" size="711450" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-can/jars/spray-can-1.2.0.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/io/spray/spray-can/1.2.0/spray-can-1.2.0.jar"/>
+					</artifact>
+					<artifact name="spray-can" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="83321" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-can/srcs/spray-can-1.2.0-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/io/spray/spray-can/1.2.0/spray-can-1.2.0-sources.jar"/>
+					</artifact>
+					<artifact name="spray-can" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="510219" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-can/docs/spray-can-1.2.0-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/io/spray/spray-can/1.2.0/spray-can-1.2.0-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.spray" name="spray-io">
+			<revision name="1.2.0" status="release" pubdate="20131213163217" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://spray.io" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="5">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="3134" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-io/ivy-1.2.0.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/io/spray/spray-io/1.2.0/spray-io-1.2.0.pom"/>
+				<caller organisation="default" name="oderable$sources_javadoc_2.10" conf="compile, runtime" rev="1.2.0" rev-constraint-default="1.2.0" rev-constraint-dynamic="1.2.0" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="spray-io" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="20315" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-io/srcs/spray-io-1.2.0-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/io/spray/spray-io/1.2.0/spray-io-1.2.0-sources.jar"/>
+					</artifact>
+					<artifact name="spray-io" type="jar" ext="jar" status="no" details="" size="193565" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-io/jars/spray-io-1.2.0.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/io/spray/spray-io/1.2.0/spray-io-1.2.0.jar"/>
+					</artifact>
+					<artifact name="spray-io" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="486779" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-io/docs/spray-io-1.2.0-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/io/spray/spray-io/1.2.0/spray-io-1.2.0-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.spray" name="spray-http">
+			<revision name="1.2.0" status="release" pubdate="20131213163038" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://spray.io" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="8">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="3119" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-http/ivy-1.2.0.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/io/spray/spray-http/1.2.0/spray-http-1.2.0.pom"/>
+				<caller organisation="default" name="oderable$sources_javadoc_2.10" conf="compile, runtime" rev="1.2.0" rev-constraint-default="1.2.0" rev-constraint-dynamic="1.2.0" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="spray-http" type="jar" ext="jar" status="no" details="" size="1282343" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-http/jars/spray-http-1.2.0.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/io/spray/spray-http/1.2.0/spray-http-1.2.0.jar"/>
+					</artifact>
+					<artifact name="spray-http" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="89255" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-http/srcs/spray-http-1.2.0-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/io/spray/spray-http/1.2.0/spray-http-1.2.0-sources.jar"/>
+					</artifact>
+					<artifact name="spray-http" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="1432624" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-http/docs/spray-http-1.2.0-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/io/spray/spray-http/1.2.0/spray-http-1.2.0-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.parboiled" name="parboiled-scala_2.10">
+			<revision name="1.1.6" status="release" pubdate="20130826125413" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://parboiled.org" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="9">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="2946" time="0" location="/Users/m.joehren/.ivy2/cache/org.parboiled/parboiled-scala_2.10/ivy-1.1.6.xml" searched="false" origin-is-local="false" origin-location="https://oss.sonatype.org/content/repositories/releases/org/parboiled/parboiled-scala_2.10/1.1.6/parboiled-scala_2.10-1.1.6.pom"/>
+				<caller organisation="default" name="oderable$sources_javadoc_2.10" conf="compile, runtime" rev="1.1.6" rev-constraint-default="1.1.6" rev-constraint-dynamic="1.1.6" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="parboiled-scala_2.10" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="28671" time="0" location="/Users/m.joehren/.ivy2/cache/org.parboiled/parboiled-scala_2.10/srcs/parboiled-scala_2.10-1.1.6-sources.jar">
+						<origin-location is-local="false" location="https://oss.sonatype.org/content/repositories/releases/org/parboiled/parboiled-scala_2.10/1.1.6/parboiled-scala_2.10-1.1.6-sources.jar"/>
+					</artifact>
+					<artifact name="parboiled-scala_2.10" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="591551" time="0" location="/Users/m.joehren/.ivy2/cache/org.parboiled/parboiled-scala_2.10/docs/parboiled-scala_2.10-1.1.6-javadoc.jar">
+						<origin-location is-local="false" location="https://oss.sonatype.org/content/repositories/releases/org/parboiled/parboiled-scala_2.10/1.1.6/parboiled-scala_2.10-1.1.6-javadoc.jar"/>
+					</artifact>
+					<artifact name="parboiled-scala_2.10" type="jar" ext="jar" status="no" details="" size="237780" time="0" location="/Users/m.joehren/.ivy2/cache/org.parboiled/parboiled-scala_2.10/jars/parboiled-scala_2.10-1.1.6.jar">
+						<origin-location is-local="false" location="https://oss.sonatype.org/content/repositories/releases/org/parboiled/parboiled-scala_2.10/1.1.6/parboiled-scala_2.10-1.1.6.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.parboiled" name="parboiled-core">
+			<revision name="1.1.6" status="release" pubdate="20130822173221" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://parboiled.org" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="10">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="2654" time="0" location="/Users/m.joehren/.ivy2/cache/org.parboiled/parboiled-core/ivy-1.1.6.xml" searched="false" origin-is-local="false" origin-location="https://oss.sonatype.org/content/repositories/releases/org/parboiled/parboiled-core/1.1.6/parboiled-core-1.1.6.pom"/>
+				<caller organisation="default" name="oderable$sources_javadoc_2.10" conf="compile, runtime" rev="1.1.6" rev-constraint-default="1.1.6" rev-constraint-dynamic="1.1.6" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="parboiled-core" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="166648" time="0" location="/Users/m.joehren/.ivy2/cache/org.parboiled/parboiled-core/srcs/parboiled-core-1.1.6-sources.jar">
+						<origin-location is-local="false" location="https://oss.sonatype.org/content/repositories/releases/org/parboiled/parboiled-core/1.1.6/parboiled-core-1.1.6-sources.jar"/>
+					</artifact>
+					<artifact name="parboiled-core" type="jar" ext="jar" status="no" details="" size="187091" time="0" location="/Users/m.joehren/.ivy2/cache/org.parboiled/parboiled-core/jars/parboiled-core-1.1.6.jar">
+						<origin-location is-local="false" location="https://oss.sonatype.org/content/repositories/releases/org/parboiled/parboiled-core/1.1.6/parboiled-core-1.1.6.jar"/>
+					</artifact>
+					<artifact name="parboiled-core" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="457802" time="0" location="/Users/m.joehren/.ivy2/cache/org.parboiled/parboiled-core/docs/parboiled-core-1.1.6-javadoc.jar">
+						<origin-location is-local="false" location="https://oss.sonatype.org/content/repositories/releases/org/parboiled/parboiled-core/1.1.6/parboiled-core-1.1.6-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.spray" name="spray-util">
+			<revision name="1.2.0" status="release" pubdate="20131213162915" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://spray.io" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="6">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="3111" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-util/ivy-1.2.0.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/io/spray/spray-util/1.2.0/spray-util-1.2.0.pom"/>
+				<caller organisation="default" name="oderable$sources_javadoc_2.10" conf="compile, runtime" rev="1.2.0" rev-constraint-default="1.2.0" rev-constraint-dynamic="1.2.0" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="spray-util" type="jar" ext="jar" status="no" details="" size="128707" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-util/jars/spray-util-1.2.0.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/io/spray/spray-util/1.2.0/spray-util-1.2.0.jar"/>
+					</artifact>
+					<artifact name="spray-util" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="29878" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-util/srcs/spray-util-1.2.0-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/io/spray/spray-util/1.2.0/spray-util-1.2.0-sources.jar"/>
+					</artifact>
+					<artifact name="spray-util" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="478948" time="0" location="/Users/m.joehren/.ivy2/cache/io.spray/spray-util/docs/spray-util-1.2.0-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/io/spray/spray-util/1.2.0/spray-util-1.2.0-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-library">
+			<revision name="2.10.3" status="release" pubdate="20130927114454" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.10.3/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="7">
+				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html          "/>
+				<metadata-artifact status="no" details="" size="2585" time="0" location="/Users/m.joehren/.ivy2/cache/org.scala-lang/scala-library/ivy-2.10.3.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.10.3/scala-library-2.10.3.pom"/>
+				<caller organisation="default" name="oderable$sources_javadoc_2.10" conf="compile, runtime" rev="2.10.3" rev-constraint-default="2.10.3" rev-constraint-dynamic="2.10.3" callerrev="1.0" extra-info.apiURL="http://www.scala-lang.org/api/2.10.3/"/>
+				<artifacts>
+					<artifact name="scala-library" type="jar" ext="jar" status="no" details="" size="7126003" time="0" location="/Users/m.joehren/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.10.3.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.10.3/scala-library-2.10.3.jar"/>
+					</artifact>
+					<artifact name="scala-library" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="33911475" time="0" location="/Users/m.joehren/.ivy2/cache/org.scala-lang/scala-library/docs/scala-library-2.10.3-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.10.3/scala-library-2.10.3-javadoc.jar"/>
+					</artifact>
+					<artifact name="scala-library" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="1062304" time="0" location="/Users/m.joehren/.ivy2/cache/org.scala-lang/scala-library/srcs/scala-library-2.10.3-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.10.3/scala-library-2.10.3-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.typesafe.akka" name="akka-slf4j_2.10">
+			<revision name="2.2.3" status="release" pubdate="20131023103726" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://akka.io" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="2">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="3029" time="0" location="/Users/m.joehren/.ivy2/cache/com.typesafe.akka/akka-slf4j_2.10/ivy-2.2.3.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/com/typesafe/akka/akka-slf4j_2.10/2.2.3/akka-slf4j_2.10-2.2.3.pom"/>
+				<caller organisation="default" name="oderable$sources_javadoc_2.10" conf="compile, runtime" rev="2.2.3" rev-constraint-default="2.2.3" rev-constraint-dynamic="2.2.3" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="akka-slf4j_2.10" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="2335" time="0" location="/Users/m.joehren/.ivy2/cache/com.typesafe.akka/akka-slf4j_2.10/srcs/akka-slf4j_2.10-2.2.3-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/typesafe/akka/akka-slf4j_2.10/2.2.3/akka-slf4j_2.10-2.2.3-sources.jar"/>
+					</artifact>
+					<artifact name="akka-slf4j_2.10" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="29614" time="0" location="/Users/m.joehren/.ivy2/cache/com.typesafe.akka/akka-slf4j_2.10/docs/akka-slf4j_2.10-2.2.3-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/typesafe/akka/akka-slf4j_2.10/2.2.3/akka-slf4j_2.10-2.2.3-javadoc.jar"/>
+					</artifact>
+					<artifact name="akka-slf4j_2.10" type="jar" ext="jar" status="no" details="" size="14495" time="0" location="/Users/m.joehren/.ivy2/cache/com.typesafe.akka/akka-slf4j_2.10/jars/akka-slf4j_2.10-2.2.3.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/typesafe/akka/akka-slf4j_2.10/2.2.3/akka-slf4j_2.10-2.2.3.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.slf4j" name="slf4j-api">
+			<revision name="1.7.2" status="release" pubdate="20121011205524" resolver="public" artresolver="public" homepage="http://www.slf4j.org" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="3">
+				<metadata-artifact status="no" details="" size="4469" time="0" location="/Users/m.joehren/.ivy2/cache/org.slf4j/slf4j-api/ivy-1.7.2.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.2/slf4j-api-1.7.2.pom"/>
+				<caller organisation="default" name="oderable$sources_javadoc_2.10" conf="compile, runtime" rev="1.7.2" rev-constraint-default="1.7.2" rev-constraint-dynamic="1.7.2" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="slf4j-api" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="47186" time="0" location="/Users/m.joehren/.ivy2/cache/org.slf4j/slf4j-api/srcs/slf4j-api-1.7.2-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.2/slf4j-api-1.7.2-sources.jar"/>
+					</artifact>
+					<artifact name="slf4j-api" type="jar" ext="jar" status="no" details="" size="26083" time="0" location="/Users/m.joehren/.ivy2/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.7.2.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.2/slf4j-api-1.7.2.jar"/>
+					</artifact>
+					<artifact name="slf4j-api" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="183169" time="0" location="/Users/m.joehren/.ivy2/cache/org.slf4j/slf4j-api/docs/slf4j-api-1.7.2-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.2/slf4j-api-1.7.2-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.typesafe.akka" name="akka-actor_2.10">
+			<revision name="2.2.3" status="release" pubdate="20131023103548" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://akka.io" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="0">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="2638" time="0" location="/Users/m.joehren/.ivy2/cache/com.typesafe.akka/akka-actor_2.10/ivy-2.2.3.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/com/typesafe/akka/akka-actor_2.10/2.2.3/akka-actor_2.10-2.2.3.pom"/>
+				<caller organisation="default" name="oderable$sources_javadoc_2.10" conf="compile, runtime" rev="2.2.3" rev-constraint-default="2.2.3" rev-constraint-dynamic="2.2.3" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="akka-actor_2.10" type="jar" ext="jar" status="no" details="" size="2669443" time="0" location="/Users/m.joehren/.ivy2/cache/com.typesafe.akka/akka-actor_2.10/jars/akka-actor_2.10-2.2.3.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/typesafe/akka/akka-actor_2.10/2.2.3/akka-actor_2.10-2.2.3.jar"/>
+					</artifact>
+					<artifact name="akka-actor_2.10" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="321821" time="0" location="/Users/m.joehren/.ivy2/cache/com.typesafe.akka/akka-actor_2.10/srcs/akka-actor_2.10-2.2.3-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/typesafe/akka/akka-actor_2.10/2.2.3/akka-actor_2.10-2.2.3-sources.jar"/>
+					</artifact>
+					<artifact name="akka-actor_2.10" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="2229531" time="0" location="/Users/m.joehren/.ivy2/cache/com.typesafe.akka/akka-actor_2.10/docs/akka-actor_2.10-2.2.3-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/typesafe/akka/akka-actor_2.10/2.2.3/akka-actor_2.10-2.2.3-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.typesafe" name="config">
+			<revision name="1.0.2" status="release" pubdate="20130703150814" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/typesafehub/config" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="1">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="2723" time="0" location="/Users/m.joehren/.ivy2/cache/com.typesafe/config/ivy-1.0.2.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/com/typesafe/config/1.0.2/config-1.0.2.pom"/>
+				<caller organisation="default" name="oderable$sources_javadoc_2.10" conf="compile, runtime" rev="1.0.2" rev-constraint-default="1.0.2" rev-constraint-dynamic="1.0.2" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="config" type="jar" ext="jar" status="no" details="" size="187497" time="0" location="/Users/m.joehren/.ivy2/cache/com.typesafe/config/jars/config-1.0.2.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/typesafe/config/1.0.2/config-1.0.2.jar"/>
+					</artifact>
+					<artifact name="config" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="126063" time="0" location="/Users/m.joehren/.ivy2/cache/com.typesafe/config/srcs/config-1.0.2-sources.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/typesafe/config/1.0.2/config-1.0.2-sources.jar"/>
+					</artifact>
+					<artifact name="config" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="160436" time="0" location="/Users/m.joehren/.ivy2/cache/com.typesafe/config/docs/config-1.0.2-javadoc.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/typesafe/config/1.0.2/config-1.0.2-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>
