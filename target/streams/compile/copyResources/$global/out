@@ -1,9 +1,0 @@
-[0m[[0mdebug[0m] [0mCopy resource mappings: [0m
-[0m[[0mdebug[0m] [0m	(/Users/m.joehren/development/matlockx/oderable/src/main/resources/application.conf,/Users/m.joehren/development/matlockx/oderable/target/scala-2.10/classes/application.conf)[0m
-[0m[[0mdebug[0m] [0m	(/Users/m.joehren/development/matlockx/oderable/src/main/resources/META-INF,/Users/m.joehren/development/matlockx/oderable/target/scala-2.10/classes/META-INF)[0m
-[0m[[0mdebug[0m] [0m	(/Users/m.joehren/development/matlockx/oderable/src/main/resources/negative_words.csv,/Users/m.joehren/development/matlockx/oderable/target/scala-2.10/classes/negative_words.csv)[0m
-[0m[[0mdebug[0m] [0m	(/Users/m.joehren/development/matlockx/oderable/src/main/resources/positive_words.csv,/Users/m.joehren/development/matlockx/oderable/target/scala-2.10/classes/positive_words.csv)[0m
-[0m[[0mdebug[0m] [0m	(/Users/m.joehren/development/matlockx/oderable/src/main/resources/META-INF/aop.xml,/Users/m.joehren/development/matlockx/oderable/target/scala-2.10/classes/META-INF/aop.xml)[0m
-[0m[[0mdebug[0m] [0m	(/Users/m.joehren/development/matlockx/oderable/src/main/resources/META-INF/monitor,/Users/m.joehren/development/matlockx/oderable/target/scala-2.10/classes/META-INF/monitor)[0m
-[0m[[0mdebug[0m] [0m	(/Users/m.joehren/development/matlockx/oderable/src/main/resources/META-INF/monitor/agent.conf,/Users/m.joehren/development/matlockx/oderable/target/scala-2.10/classes/META-INF/monitor/agent.conf)[0m
-[0m[[0mdebug[0m] [0m	(/Users/m.joehren/development/matlockx/oderable/src/main/resources/META-INF/monitor/output.conf,/Users/m.joehren/development/matlockx/oderable/target/scala-2.10/classes/META-INF/monitor/output.conf)[0m
