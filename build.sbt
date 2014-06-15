@@ -20,8 +20,8 @@ libraryDependencies ++= Seq(
   "io.spray"                % "spray-httpx"           % "1.3.1",
   "io.spray"                % "spray-client"          % "1.3.1",
   "io.spray"                % "spray-routing"         % "1.3.1",
-  "io.spray"               %% "spray-json"            % "1.3.1",
-  //"org.json4s"            %% "json4s-native"          % "3.2.9",
+  "io.spray"               %% "spray-json"            % "1.2.6",
+  "org.json4s"            %% "json4s-native"          % "3.2.9",
   "org.apache.commons"      % "commons-math3"         % "3.3",
   "org.specs2"             %% "specs2"                % "2.2.2"        % "test",
   "io.spray"                % "spray-testkit"         % "1.2.0"        % "test",
@@ -40,7 +40,7 @@ scalacOptions ++= Seq(
 
 parallelExecution in Test := false
 
-javaOptions in run += "-javaagent:" + System.getProperty("user.home") + "/.ivy2/cache/org.aspectj/aspectjweaver/jars/aspectjweaver-1.7.3.jar"
+javaOptions ++= Seq("-Xmx512m")
 
 fork in run := true
 
