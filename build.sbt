@@ -22,6 +22,8 @@ libraryDependencies ++= Seq(
   "io.spray"                % "spray-routing"         % "1.3.1",
   "io.spray"               %% "spray-json"            % "1.2.6",
   "org.json4s"            %% "json4s-native"          % "3.2.9",
+  "joda-time"             % "joda-time"               % "2.3",
+  "org.joda" % "joda-convert" % "1.6",
   "org.apache.commons"      % "commons-math3"         % "3.3",
   "org.specs2"             %% "specs2"                % "2.2.2"        % "test",
   "io.spray"                % "spray-testkit"         % "1.2.0"        % "test",
