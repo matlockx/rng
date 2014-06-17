@@ -89,5 +89,5 @@ class RestRouting extends HttpService with Actor with ActorLogging {
 
   import akka.event.Logging._
 
-  def showRequest(request: HttpRequest) = ""//LogEntry(request.toString, InfoLevel)
+  def showRequest(request: HttpRequest) = LogEntry(request.toString, InfoLevel)
 }

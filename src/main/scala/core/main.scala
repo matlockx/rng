@@ -9,6 +9,8 @@ import akka.pattern._
                    import scala.concurrent.ExecutionContext.Implicits.global
 import akka.util.Timeout
 import akka.routing.RoundRobinPool
+import ch.qos.logback.classic.LoggerContext
+import ch.qos.logback.core.util.StatusPrinter
 
 object Main extends App {
 
@@ -22,7 +24,8 @@ object Main extends App {
   system.registerOnTermination {
     system.log.info("Actor per request demo shutdown.")
   }
-  IO(Http) ! Http.Bind(serviceActor, args(0), port = 38080)
+  val config = system.settings.config
+  IO(Http) ! Http.Bind(serviceActor, interface = config.getString("host.public_dns"), port = config.getInt("host.port"))
 
 }
 
