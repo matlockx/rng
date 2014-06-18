@@ -20,18 +20,21 @@ import spray.can.Http
 import spray.can.server.{Stats => SprayStats}
 import org.joda.time.DateTime
 
-case class GetNumber()
+case class GetNumbers(amount : Int = 1)
 
 case class Reseed()
 
-case class RandomNumber(number: Float, createdAt: String = DateTime.now().toString())
+case class RandomNumbers(numbers: Seq[Float], createdAt: String = DateTime.now().toString())
 
 class RandomNumberGenerator extends Actor with ActorLogging {
   val rng = new Well44497b(util.Random.nextLong())
+  val maxNumber = context.system.settings.config.getInt("rng.max-amount-random-numbers")
 
   def receive = {
-    case GetNumber() =>
-      sender ! RandomNumber(rng.nextFloat())
+    case GetNumbers(amount) =>
+      val newAmount = if(amount > maxNumber) maxNumber else amount
+      val numbers = for(i <- 0 until newAmount) yield rng.nextFloat()
+      sender ! RandomNumbers(numbers)
     case Reseed() => rng.setSeed(util.Random.nextLong())
     case msg => s"Cannot map $msg"
   }
@@ -40,7 +43,7 @@ class RandomNumberGenerator extends Actor with ActorLogging {
 object MyJsonProtocol extends Json4sSupport {
   implicit def json4sFormats: Formats = DefaultFormats
 
-  implicit val rnMarshaller = json4sMarshaller[RandomNumber]
+  implicit val rnMarshaller = json4sMarshaller[RandomNumbers]
   implicit val statsMarshaller = json4sMarshaller[SprayStats]
 }
 
@@ -64,16 +67,16 @@ class RestRouting extends HttpService with Actor with ActorLogging {
 
   val route = {
 
-    path("rn") {
+    path("rns") {
       clientIP { ip =>
         get {
-          logRequest(showRequest _) {
-            complete {
-
-              rng.ask(GetNumber()).mapTo[core.RandomNumber]
+          parameter("amount".as[Int] ? 1) { amount =>
+            logRequest(showRequest _) {
+              complete {
+                rng.ask(GetNumbers(amount)).mapTo[core.RandomNumbers]
+              }
             }
           }
-
         }
       }
     } ~ path("admin" / "ping") {

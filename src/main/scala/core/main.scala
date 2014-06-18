@@ -25,7 +25,7 @@ object Main extends App {
     system.log.info("Actor per request demo shutdown.")
   }
   val config = system.settings.config
-  IO(Http) ! Http.Bind(serviceActor, interface = config.getString("host.public_dns"), port = config.getInt("host.port"))
+  IO(Http) ! Http.Bind(serviceActor, interface = config.getString("rng.host.public_dns"), port = config.getInt("rng.host.port"))
 
 }
 
