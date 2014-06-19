@@ -46,7 +46,7 @@
 
 - hosts: ec2hosts
   gather_facts: True
-  user: ec2-user
+  user: ubuntu
   sudo: True
   tasks:
 
@@ -57,24 +57,24 @@
     - debug: var=hostvars[inventory_hostname]
 
     # just show the instance-id
-    - debug: msg="{{ hostvars[inventory_hostname]['ansible_ec2_instance-id'] }}"
+    - debug: msg="{{ hostvars[inventory_hostname]['ansible_ec2_instance_id'] }}"
 
 
 # Using the instanceid, call the ec2 module
 # locally to remove the instance by declaring
 # it's state is "absent"
 
-- hosts: ec2hosts
+- hosts: all
   gather_facts: True
-  connection: local
+  user: ubuntu
   tags: deploy
+  sudo: True
   tasks:
       - name: copy the webapp
         copy: src=./target/universal/rng-0.1.0.tgz dest=/opt/
 
       - name: extract the webapp folder
         command: chdir=/opt/ tar -xvzf rng-0.1.0.tgz
-                 creates=/opt/webapp
 
       - name: start webapp
-        command: /opt/webapp/bin/rng -mem 512
+        command: /opt/rng-0.1.0/bin/rng -mem 512
