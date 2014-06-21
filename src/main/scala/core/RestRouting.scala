@@ -2,23 +2,17 @@ package core
 
 import akka.actor.{Props, ActorLogging, Actor}
 import spray.routing.HttpService
-import akka.pattern._
 import akka.util.Timeout
 
 import scala.concurrent.duration._
-import org.json4s.{Formats, DefaultFormats}
 import spray.httpx.Json4sSupport
 import org.apache.commons.math3.random.{Well44497b}
-import spray.json.JsonFormat
 import reflect.ClassTag
 import spray.routing.directives.LogEntry
-import akka.event.Logging.LogLevel
-import spray.http.{HttpResponse, HttpRequest}
-import scala.Some
-import org.omg.CosNaming.NamingContextPackage.NotFound
-import spray.can.Http
-import spray.can.server.{Stats => SprayStats}
+import spray.http.HttpRequest
 import org.joda.time.DateTime
+import spray.httpx.encoding.Gzip
+import spray.http.HttpRequest
 
 case class GetNumbers(amount : Int = 1)
 
@@ -35,57 +29,39 @@ class RandomNumberGenerator extends Actor with ActorLogging {
       val newAmount = if(amount > maxNumber) maxNumber else amount
       val numbers = for(i <- 0 until newAmount) yield rng.nextFloat()
       sender ! RandomNumbers(numbers)
-    case Reseed() => rng.setSeed(util.Random.nextLong())
+    case Reseed() =>
+      log.info("Reseed")
+      rng.setSeed(util.Random.nextLong())
     case msg => s"Cannot map $msg"
   }
 }
 
-object MyJsonProtocol extends Json4sSupport {
-  implicit def json4sFormats: Formats = DefaultFormats
-
-  implicit val rnMarshaller = json4sMarshaller[RandomNumbers]
-  implicit val statsMarshaller = json4sMarshaller[SprayStats]
-}
-
-class RestRouting extends HttpService with Actor with ActorLogging {
-
-  implicit def actorRefFactory = context
+trait RngService extends HttpService  {
 
   implicit val timeout = Timeout(5 seconds)
 
-  def receive = runRoute(route)
+  val rng  = actorRefFactory.actorOf(Props(new RandomNumberGenerator), name = "RandomNumberGenerator")
 
-  import context.dispatcher
+  import akka.pattern._
+  import spray.http.MediaTypes._
+  import RngJsonProtocol.RngFormat
+  import scala.concurrent.ExecutionContext.Implicits.global
+  import spray.httpx.SprayJsonSupport._
 
-  val rng = context.actorOf(Props(new RandomNumberGenerator), name = "RandomNumberGenerator")
-  context.system.scheduler.schedule(10 seconds, 1 hour, rng, Reseed())
-
-  import MyJsonProtocol.statsMarshaller
-  import MyJsonProtocol.rnMarshaller
-
-  def httpListener = actorRefFactory.actorSelection("/user/IO-HTTP/listener-0")
-
-  val route = {
-
+  val route = compressResponse(Gzip) {
     path("rns") {
       clientIP { ip =>
         get {
           parameter("amount".as[Int] ? 1) { amount =>
             logRequest(showRequest _) {
-              complete {
-                rng.ask(GetNumbers(amount)).mapTo[core.RandomNumbers]
+              respondWithMediaType(`application/json`) {
+                complete {
+                  (rng ? GetNumbers(amount)).mapTo[RandomNumbers]
+                }
               }
             }
           }
         }
-      }
-    } ~ path("admin" / "ping") {
-      complete {
-        "pong"
-      }
-    } ~ path("admin" / "stats") {
-      complete {
-        (httpListener ? Http.GetStats).mapTo[SprayStats]
       }
     }
   }
@@ -94,3 +70,14 @@ class RestRouting extends HttpService with Actor with ActorLogging {
 
   def showRequest(request: HttpRequest) = LogEntry(request.toString, InfoLevel)
 }
+
+class RestRouting extends Actor with RngService with ActorLogging {
+
+  implicit def actorRefFactory = context
+  def receive = runRoute(route)
+  import context.dispatcher
+
+  context.system.scheduler.schedule(10 seconds, 10 seconds, self, Reseed())
+
+}
+

@@ -11,21 +11,25 @@ import akka.util.Timeout
 import akka.routing.RoundRobinPool
 import ch.qos.logback.classic.LoggerContext
 import ch.qos.logback.core.util.StatusPrinter
+import spray.can.server.Stats
+import spray.routing.HttpService
 
 object Main extends App {
+
 
 
   implicit val system = ActorSystem("rng")
 
   val cores = Runtime.getRuntime().availableProcessors()
   system.log.info(s"Found $cores cores -> Creating a round robin pool of $cores")
-  val serviceActor = system.actorOf(RoundRobinPool(cores).props(Props(new RestRouting)), name = "rest-routing")
+  val rngActor = system.actorOf(RoundRobinPool(cores).props(Props(new RestRouting)), name = "rngService")
+  val adminActor = system.actorOf(Props(new AdminRoute), name = "adminService")
 
   system.registerOnTermination {
     system.log.info("Actor per request demo shutdown.")
   }
   val config = system.settings.config
-  IO(Http) ! Http.Bind(serviceActor, interface = config.getString("rng.host.public_dns"), port = config.getInt("rng.host.port"))
+  IO(Http) ! Http.Bind(adminActor, interface = config.getString("rng.host.public_dns"), port = config.getInt("rng.host.port") + 1)
+  IO(Http) ! Http.Bind(rngActor, interface = config.getString("rng.host.public_dns"), port = config.getInt("rng.host.port"))
 
 }
-

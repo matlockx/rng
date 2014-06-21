@@ -1,5 +1,6 @@
 import com.typesafe.sbt.SbtNativePackager._
 import NativePackagerKeys._
+import com.typesafe.sbt.packager.archetypes.ServerLoader.{Upstart, SystemV}
 
 name := """rng"""
 
@@ -7,7 +8,21 @@ version := "0.1.0"
 
 scalaVersion := "2.10.2"
 
-packageArchetype.java_application
+packageArchetype.java_server
+
+serverLoading := Upstart
+
+maintainer in Linux := "Random Number Generator <rng@test.de>"
+
+packageSummary in Linux := "A small package summary"
+
+packageDescription := "A longer description of your application"
+
+debianPackageDependencies in Debian ++= Seq("openjdk-7-jre")
+
+daemonUser in Linux := normalizedName.value
+
+daemonGroup in Linux := normalizedName.value
 
 resolvers += "spray repo" at "http://repo.spray.io"
 
@@ -26,8 +41,8 @@ libraryDependencies ++= Seq(
   "ch.qos.logback"        % "logback-classic"         % "1.0.13",
   "org.apache.commons"      % "commons-math3"         % "3.3",
   "org.specs2"             %% "specs2"                % "2.2.2"        % "test",
-  "io.spray"                % "spray-testkit"         % "1.2.0"        % "test",
-  "com.typesafe.akka"      %% "akka-testkit"          % "2.2.3"        % "test"
+  "io.spray"                % "spray-testkit"         % "1.3.1"        % "test",
+  "com.typesafe.akka"      %% "akka-testkit"          % "2.3.0"        % "test"
 )
 
 scalacOptions ++= Seq(
