@@ -35,7 +35,6 @@ libraryDependencies ++= Seq(
   "io.spray"                % "spray-httpx"           % "1.3.1",
   "io.spray"                % "spray-routing"         % "1.3.1",
   "io.spray"               %% "spray-json"            % "1.2.6",
-  "org.json4s"            %% "json4s-native"          % "3.2.9",
   "joda-time"             % "joda-time"               % "2.3",
   "org.joda"              % "joda-convert"            % "1.6",
   "ch.qos.logback"        % "logback-classic"         % "1.0.13",
