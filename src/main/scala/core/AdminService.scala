@@ -10,17 +10,10 @@ import RngJsonProtocol.statsFormat
 import spray.httpx.SprayJsonSupport._
 import akka.actor.Actor
 
-/**
- *
- */
-class AdminRoute extends Actor with HttpService {
-
+trait AdminRoute extends HttpService {
   import scala.concurrent.ExecutionContext.Implicits.global
   implicit val timeout = Timeout(5 seconds)
   def httpListener = actorRefFactory.actorSelection("/user/IO-HTTP/listener-0")
-  implicit def actorRefFactory = context
-  def receive = runRoute(adminRoute)
-
   val adminRoute = path("admin" / "ping") {
     get {
       complete {
@@ -32,4 +25,13 @@ class AdminRoute extends Actor with HttpService {
       (httpListener ? Http.GetStats).mapTo[Stats]
     }
   }
+}
+
+
+class AdminService extends Actor with AdminRoute {
+
+  implicit def actorRefFactory = context
+  def receive = runRoute(adminRoute)
+
+
 }

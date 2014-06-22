@@ -22,8 +22,8 @@ object Main extends App {
 
   val cores = Runtime.getRuntime().availableProcessors()
   system.log.info(s"Found $cores cores -> Creating a round robin pool of $cores")
-  val rngActor = system.actorOf(RoundRobinPool(cores).props(Props(new RestRouting)), name = "rngService")
-  val adminActor = system.actorOf(Props(new AdminRoute), name = "adminService")
+  val rngActor = system.actorOf(RoundRobinPool(cores).props(Props(new RngService)), name = "rngService")
+  val adminActor = system.actorOf(Props(new AdminService), name = "adminService")
 
   system.registerOnTermination {
     system.log.info("Actor per request demo shutdown.")

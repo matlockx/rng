@@ -36,7 +36,7 @@ class RandomNumberGenerator extends Actor with ActorLogging {
   }
 }
 
-trait RngService extends HttpService  {
+trait RngRoute extends HttpService  {
 
   implicit val timeout = Timeout(5 seconds)
 
@@ -48,16 +48,14 @@ trait RngService extends HttpService  {
   import scala.concurrent.ExecutionContext.Implicits.global
   import spray.httpx.SprayJsonSupport._
 
-  val route = compressResponse(Gzip) {
-    path("rns") {
-      clientIP { ip =>
-        get {
-          parameter("amount".as[Int] ? 1) { amount =>
-            logRequest(showRequest _) {
-              respondWithMediaType(`application/json`) {
-                complete {
-                  (rng ? GetNumbers(amount)).mapTo[RandomNumbers]
-                }
+  val rngRoute = path("rns") {
+      get {
+        clientIP { ip =>
+        parameter("amount".as[Int] ? 1) { amount =>
+          logRequest(showRequest _) {
+            respondWithMediaType(`application/json`) {
+              complete {
+                (rng ? GetNumbers(amount)).mapTo[RandomNumbers]
               }
             }
           }
@@ -71,10 +69,10 @@ trait RngService extends HttpService  {
   def showRequest(request: HttpRequest) = LogEntry(request.toString, InfoLevel)
 }
 
-class RestRouting extends Actor with RngService with ActorLogging {
+class RngService extends Actor with RngRoute with ActorLogging {
 
   implicit def actorRefFactory = context
-  def receive = runRoute(route)
+  def receive = runRoute(rngRoute)
   import context.dispatcher
 
   context.system.scheduler.schedule(10 seconds, 10 seconds, self, Reseed())
