@@ -64,12 +64,17 @@
 # locally to remove the instance by declaring
 # it's state is "absent"
 
-- hosts: all
+- hosts: ec2hosts
   gather_facts: True
   user: ubuntu
   tags: deploy
   sudo: True
   tasks:
+      - ec2_facts:
+
+      - name: install java 7
+        apt: name=openjdk-7-jre state=latest install_recommends=no  update_cache=yes
+
       - name: copy the webapp
         copy: src=./target/universal/rng-0.1.0.tgz dest=/opt/
 
@@ -77,4 +82,4 @@
         command: chdir=/opt/ tar -xvzf rng-0.1.0.tgz
 
       - name: start webapp
-        command: /opt/rng-0.1.0/bin/rng -mem 512
+        command: chdir=/opt/rng-0.1.0 /opt/rng-0.1.0/bin/rng -mem 512 -Drng.host.public_dns={{ hostvars[inventory_hostname]['ansible_ec2_public_hostname'] }}
