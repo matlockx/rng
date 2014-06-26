@@ -15,5 +15,6 @@ object RngJsonProtocol extends DefaultJsonProtocol {
   }
 
   implicit val statsFormat = jsonFormat8(SprayStats)
-  implicit val RngFormat = jsonFormat2(RandomNumbers)
+  implicit val RngFormatFloat = jsonFormat2(RandomNumbers[Float])
+  implicit val RngFormatLong = jsonFormat2(RandomNumbers[Long])
 }

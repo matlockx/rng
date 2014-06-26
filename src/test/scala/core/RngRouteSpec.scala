@@ -6,7 +6,7 @@ import org.specs2.matcher.JsonMatchers
 
 class RngRouteSpec extends Specification with Specs2RouteTest with RngRoute {
   def actorRefFactory = system // connect the DSL to the test ActorSystem
-  import RngJsonProtocol.RngFormat
+  import RngJsonProtocol.RngFormatFloat
   "The service" should {
     "return a random number for GET request to the rns path without an amount" in {
       Get("/rns") ~> addHeader("Remote-Address", "127.0.0.1") ~> rngRoute ~> check {

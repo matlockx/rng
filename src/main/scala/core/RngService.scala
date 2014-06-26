@@ -13,21 +13,33 @@ import spray.http.HttpRequest
 import org.joda.time.DateTime
 import spray.httpx.encoding.Gzip
 import spray.http.HttpRequest
+import java.nio.ByteOrder
 
-case class GetNumbers(amount : Int = 1)
+case class GetFloatNumbers(amount: Int = 1)
+
+case class GetLongNumbers(amount: Int = 1)
 
 case class Reseed()
 
-case class RandomNumbers(numbers: Seq[Float], createdAt: String = DateTime.now().toString())
+case class RandomNumbers[T](numbers: Seq[T], createdAt: String = DateTime.now().toString())
 
 class RandomNumberGenerator extends Actor with ActorLogging {
   val rng = new Well44497b(util.Random.nextLong())
   val maxNumber = context.system.settings.config.getInt("rng.max-amount-random-numbers")
 
+  def getSaveAmount(amount: Int): Int = if (amount > maxNumber) maxNumber else amount
+
+  def getRandomNumbers[T](amount: Int, nextRandomNumber: () => T): Seq[T] = {
+    for (i <- 0 until getSaveAmount(amount)) yield nextRandomNumber()
+  }
+
   def receive = {
-    case GetNumbers(amount) =>
-      val newAmount = if(amount > maxNumber) maxNumber else amount
-      val numbers = for(i <- 0 until newAmount) yield rng.nextFloat()
+    case GetLongNumbers(amount) =>
+      val numbers = getRandomNumbers(amount, rng.nextLong)
+      val b = new akka.util.ByteStringBuilder()
+      sender ! RandomNumbers(numbers)
+    case GetFloatNumbers(amount) =>
+      val numbers = getRandomNumbers(amount, rng.nextFloat)
       sender ! RandomNumbers(numbers)
     case Reseed() =>
       log.info("Reseed")
@@ -36,27 +48,36 @@ class RandomNumberGenerator extends Actor with ActorLogging {
   }
 }
 
-trait RngRoute extends HttpService  {
+trait RngRoute extends HttpService {
 
   implicit val timeout = Timeout(5 seconds)
 
-  val rng  = actorRefFactory.actorOf(Props(new RandomNumberGenerator), name = "RandomNumberGenerator")
+  val rng = actorRefFactory.actorOf(Props(new RandomNumberGenerator), name = "RandomNumberGenerator")
 
   import akka.pattern._
   import spray.http.MediaTypes._
-  import RngJsonProtocol.RngFormat
+  import RngJsonProtocol.RngFormatLong
+  import RngJsonProtocol.RngFormatFloat
   import scala.concurrent.ExecutionContext.Implicits.global
   import spray.httpx.SprayJsonSupport._
 
-  val rngRoute = path("rns") {
-      get {
-        clientIP { ip =>
+  val rngRoute = pathPrefix("rns") {
+    get {
+      clientIP { ip =>
         parameter("amount".as[Int] ? 1) { amount =>
           logRequest(showRequest _) {
             respondWithMediaType(`application/json`) {
-              complete {
-                (rng ? GetNumbers(amount)).mapTo[RandomNumbers]
-              }
+              pathSuffix("long") {
+                complete {
+                  (rng ? GetLongNumbers(amount)).mapTo[RandomNumbers[Long]]
+                }
+              } ~
+                pathSuffix("float") {
+                  complete {
+                    (rng ? GetFloatNumbers(amount)).mapTo[RandomNumbers[Float]]
+                  }
+                }
+
             }
           }
         }
@@ -72,7 +93,9 @@ trait RngRoute extends HttpService  {
 class RngService extends Actor with RngRoute with ActorLogging {
 
   implicit def actorRefFactory = context
+
   def receive = runRoute(rngRoute)
+
   import context.dispatcher
 
   context.system.scheduler.schedule(10 seconds, 10 seconds, self, Reseed())
