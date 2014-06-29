@@ -24,7 +24,7 @@
 
 
 - name: Configure instance(s)
-  hosts: launched
+  hosts: launched:all
   sudo: True
   gather_facts: True
   tags: provisioning
@@ -32,9 +32,22 @@
     - name: install java 7
       apt: name=openjdk-7-jre-headless state=latest update_cache=yes
 
+    - name: install haproxy
+      apt: name=haproxy state=latest update_cache=yes
+
+    - name: install socat
+      apt: name=socat state=latest update_cache=yes
+
+    - name: Enable the server in haproxy
+      shell: echo "enable server spray/{{ ansible_hostname }}" | socat stdio /var/lib/haproxy/stats
+      #delegate_to: "{{ item }}"
+      #with_items: "{{ ansible_hostname }}"
+
+  roles:
+    - haproxy
 
 - name: Terminate instances
-  hosts: launched
+  hosts: all
   connection: local
   tags: delete
   vars:
