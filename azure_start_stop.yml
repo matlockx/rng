@@ -1,0 +1,45 @@
+- name: Create a sandbox instance
+  hosts: localhost
+  gather_facts: False
+  connection: local
+  tags: start
+  vars:
+    ssh_cert_path: ~/.azure/azure.pem
+    server_name: rng-test-large
+    user_name: ubuntu
+    image: 'b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu_DAILY_BUILD-saucy-13_10-amd64-server-20140618-en-us-30GB'
+  tasks:
+    # Provision virtual machine example
+    - name: 'start azure vm'
+      local_action: azure name={{ server_name }} role_size='Large' image={{image}} location='West Europe' user={{ user_name }} ssh_cert_path={{ ssh_cert_path }} storage_account=matlockxstorage
+      register: azure
+
+    - name: Add new instance to host group
+      local_action: add_host hostname={{ server_name }}  groupname=launched ansible_ssh_host={{item}} ansible_ssh_private_key_file={{ ssh_cert_path }} ansible_ssh_user={{ user_name }}
+      with_items: azure.public_dns_name
+
+    - name: Wait for SSH to come up
+      local_action: wait_for host={{ item }} port=22 delay=60 timeout=320 state=started
+      with_items: azure.public_dns_name
+
+
+- name: Configure instance(s)
+  hosts: launched
+  sudo: True
+  gather_facts: True
+  tags: provisioning
+  tasks:
+    - name: install java 7
+      apt: name=openjdk-7-jre-headless state=latest update_cache=yes
+
+
+- name: Terminate instances
+  hosts: launched
+  connection: local
+  tags: delete
+  vars:
+    server_name: rng-test-large
+  tasks:
+    # Terminate virtual machine example
+    - name: 'delete vm'
+      local_action: azure name={{ server_name }} state=absent

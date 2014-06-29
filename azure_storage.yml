@@ -1,0 +1,19 @@
+- name: Create a storage account
+  hosts: localhost
+  gather_facts: False
+  connection: local
+  vars:
+      ssh_cert_path: ~/.azure/azure.pem
+      user_name: ubuntu
+  tasks:
+    - name: Add new storage
+      local_action: azure_storage name=azurestorageaccounttest location="West Europe"
+
+- name: Delete storage account
+  hosts: localhost
+  gather_facts: False
+  tasks:
+
+    - name: delete storage
+      local_action: azure_storage name=azurestorageaccounttest state=absent
+
