@@ -1,19 +1,20 @@
 package core
 
 import akka.actor.{Props, ActorLogging, Actor}
-import spray.routing.HttpService
+import spray.routing.{StandardRoute, RequestContext, HttpService}
 import akka.util.Timeout
 
 import scala.concurrent.duration._
 import spray.httpx.Json4sSupport
 import org.apache.commons.math3.random.{Well44497b}
 import reflect.ClassTag
-import spray.routing.directives.LogEntry
-import spray.http.HttpRequest
+import spray.routing.directives.{RouteDirectives, LogEntry}
+import spray.http.{HttpHeader, StatusCode, HttpRequest}
 import org.joda.time.DateTime
 import spray.httpx.encoding.Gzip
-import spray.http.HttpRequest
 import java.nio.ByteOrder
+import spray.httpx.marshalling.Marshaller
+import spray.http.HttpHeaders.RawHeader
 
 case class GetFloatNumbers(amount: Int = 1)
 
@@ -61,11 +62,15 @@ trait RngRoute extends HttpService {
   import scala.concurrent.ExecutionContext.Implicits.global
   import spray.httpx.SprayJsonSupport._
 
+
+  val origin = "http://localhost:8081"
+
   val rngRoute = pathPrefix("rns") {
+    getFromResourceDirectory("public") ~
     get {
       clientIP { ip =>
         parameter("amount".as[Int] ? 1) { amount =>
-          logRequest(showRequest _) {
+          //logRequest(showRequest _) {
             respondWithMediaType(`application/json`) {
               pathSuffix("long") {
                 complete {
@@ -79,7 +84,7 @@ trait RngRoute extends HttpService {
                 }
 
             }
-          }
+          //}
         }
       }
     }

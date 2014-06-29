@@ -19,10 +19,8 @@ trait AdminRoute extends HttpService {
   def httpListener = actorRefFactory.actorSelection("/user/IO-HTTP/listener-0")
 
   val adminRoute =
-    path("admin") {
-      getFromResource("html/index.html")
-    } ~
       pathPrefix("admin") {
+
         get {
           pathSuffix("ping") {
             complete {

@@ -17,6 +17,12 @@ class AdminRouteSpec extends Specification with Specs2RouteTest with AdminRoute 
         responseAs[String] must contain("pong")
       }
     }
+    "return radnom check index page from admin root path" in {
+      Get("/admin/index.html") ~> adminRoute ~> check {
+        println(responseAs[String])
+        responseAs[String] must contain("RNG Test")
+      }
+    }
 
   }
 }

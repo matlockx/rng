@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>RNG Test</title>
+<head>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+</head>
+<body style="margin: 0px">
+<script>
+
+    var winningClasses = [0.001, 0.01, 0.018, 0.03, 0.08, 0.13, 0.15, 0.20, 0.3, 0.4, 0.5, 0.7, 1.0]
+    var width = 960,
+            height = 500,
+            winningHeight = height / winningClasses.length;
+
+
+    var svg = d3.select("body").append("div").append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .style({'position': 'absolute', 'top': 0})
+    var lastValue = 0;
+    for (var i = 0; i < winningClasses.length; i++) {
+        var size = winningClasses[i] - lastValue;
+        lastValue = winningClasses[i];
+        d3.select("body").select("div").append("div")
+                .style({'background-color': 'rgb(100, 78, ' + (20 * i) + ')',
+                    'height': (size * height) + "px",
+                    'width': width + "px"})
+
+        d3.select("body").append("div").
+                style({'left': width + 'px',
+                    'padding-left': '10px',
+                    'position': 'absolute',
+                    'top': ((height / winningClasses.length) * i) + 'px',
+                    'height': (height / winningClasses.length) + 'px',
+                    'width': "150px"})
+                .text("WinnginClass " + (i + 1) + ": ")
+                .append("span").attr("id", "winningClass_" + (i)).text("0");
+    }
+    d3.select("body").append("div").attr("id", "time").text("ResponseTime");
+    d3.select("body").append("div").attr("id", "requestsPerSecond").text("requestsPerSecond");
+    bestCandidateSampler(width, height, 0, 3000, winningClasses);
+
+    function bestCandidateSampler(width, height, numSamples, numSamplesMax, winningClasses) {
+        if (numSamples >= numSamplesMax)
+            return true;
+        var a, b = 0;
+        //var startTime = performance.now();
+        d3.json('/rns/float?amount=2', function (msg) {
+            a = msg.numbers[0];
+            b = msg.numbers[1];
+            for (var i = 0; i < winningClasses.length; i++) {
+                if (winningClasses[i] >= b) {
+                    $("#winningClass_" + i).text(parseInt($("#winningClass_" + i).text()) + 1);
+                    svg.append("circle")
+                            .attr("cx", a * width)
+                            .attr("cy", b * height)
+                            .attr("r", 0)
+                            .transition()
+                            .attr("r", 2);
+                    //var responseTime =  performance.now() - startTime;
+                    //console.log(responseTime);
+                    //$("#time").text(responseTime + " ms");
+                    //$("#requestsPerSecond").text(1 / (responseTime / 1000) + " requests per second.");
+                    numSamples += 1;
+                    bestCandidateSampler(width, height, numSamples, numSamplesMax, winningClasses);
+                    break;
+                }
+
+            }
+        });
+
+
+    }
+
+</script>
