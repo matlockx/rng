@@ -1,0 +1,39 @@
+---
+  - name: create unpack directory
+    file: path={{ unpack_dir }} state=directory
+
+  - name: Unpack archive
+    unarchive: src={{ local_archive }} dest={{ unpack_dir }}
+
+  - stat: path="{{ app_root }}/common"
+    register: common_dir_stat
+
+  - name: create app_root/common directory when it does not exist
+    file: path={{item}} state=directory
+    with_items:
+      - "{{ app_root }}/common" 
+    when: (common_dir_stat.stat.isdir is not defined or common_dir_stat.stat.isdir == false) and (common_dir_stat.stat.islnk is not defined or common_dir_stat.stat.islnk == false)
+
+  - name: copy files
+    copy: src={{item.src}} dest={{item.dest}} force=no
+    with_items:
+      - {src : "common_run.sh", dest : "{{ app_root }}/common/bin/common_run.sh"}
+      - {src: "settings.sh",  dest: "{{ app_root }}/common/bin/settings.sh"}
+
+  - name: create app_root/common/(bin|logs) directories
+    file: path={{item}} state=directory
+    with_items:
+      - "{{ app_root }}/common/bin"
+      - "{{ app_root }}/common/logs"
+
+  - name: Copy the webapp startup file
+    template: src=rng.j2 dest=/etc/init.d/rng mode=0755
+    notify: restart rng
+
+  - name: Start RNG
+    service: name=rng state=started enabled=yes
+
+
+  #Example playbook using fail and when together
+  #- fail: msg="The system may not be provisioned according to the CMDB status."
+  #  when: cmdb_status != "to-be-staged"

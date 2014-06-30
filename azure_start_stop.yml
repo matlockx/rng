@@ -27,7 +27,7 @@
   hosts: launched:all
   sudo: True
   gather_facts: True
-  tags: provisioning
+  tags: configure
   tasks:
     - name: install java 7
       apt: name=openjdk-7-jre-headless state=latest update_cache=yes
@@ -45,6 +45,16 @@
 
   roles:
     - haproxy
+
+
+- name: Redeploy
+  hosts: launched:all
+  sudo: True
+  gather_facts: True
+  tags: redeploy
+  roles:
+    - webapp
+
 
 - name: Terminate instances
   hosts: all

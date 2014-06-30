@@ -1,0 +1,187 @@
+#!/bin/bash
+#------------------------------------------------------------------------------
+# {{ ansible_managed }}
+# 
+# DO NOT CHANGE!
+#
+#------------------------------------------------------------------------------
+
+# Enables overriding of default app names and app roots for development systems, if necessary
+export APP_ROOT={{ app_root }}
+export PROCNAME={{ proc_name }}
+
+# To resolv paths for required tools.
+source ${APP_ROOT}/common/bin/settings.sh
+source ${APP_ROOT}/common/bin/common_run.sh
+
+
+export PROC_HOME=${APP_ROOT}/${PROCNAME}
+#get the APPTYPE (e.g. BO) in UPPER case
+APPTYPE=`echo $PROCNAME | $CMDAWK -F"-" '{print $1}' | tr [:lower:] [:upper:]`
+APPSUBST="{{ proc_name }}"
+export PROCVERSION=`readlink ${PROC_HOME} |  $CMDAWK -F "$APPSUBST-" '{print $2}'  | $CMDSED 's:/$::'`
+
+# Generic Java Options and settings
+export JAVA_HOME=/etc/alternatives/java
+export JAVA_OPTS="$JAVA_OPTS -server -Xnoagent -XX:ReservedCodeCacheSize=64m \
+	-XX:+PrintCommandLineFlags -XX:+PrintVMOptions -XX:+HeapDumpOnOutOfMemoryError \
+	-Xloggc:${APP_ROOT}/common/logs/${PROCNAME}.gc.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps"
+
+
+export CLIENT_START_PORT={{ port }}
+export PROC_BIN=${PROC_HOME}/bin/{{ proc_name }}
+export PROC_OPTS=" -mem 512 -Drng.host.port=${CLIENT_START_PORT}"
+export PROC_PID=${APP_ROOT}/${PROCNAME}/${PROCNAME}.pid
+export PROC_LOGS=${APP_ROOT}/common/logs
+export PROC_MAINLOGFILE=$PROC_LOGS/${PROCNAME}.main.log
+export APPLICATION_LOGFILE=$PROC_LOGS/${PROCNAME}.application.log
+export CLIENT_HEALTH_FILE="${PROC_HOME}/${PROCNAME}.health"
+
+# The file ${PROC_HOME}/RUNNING_PID is automatically created by the application
+#  and removed upon normal termination. However this file must be removed if the process
+#  is no longer running (e.g. due to abnormal termination, kill -9) as the
+#  application will refuse to start if this file exists.
+export PID_FILE=${PROC_HOME}/RUNNING_PID
+
+# qs-specific java options and settings
+export JAVA_OPTS="$JAVA_OPTS -Dapplication.logtarget=${APPLICATION_LOGFILE} "
+# The script qs-webapp only requires the environment variable "java_opts" 
+#  (written in lower case, not "JAVA_OPTS")
+export java_opts="$JAVA_OPTS"
+
+export PATH=$JAVA_HOME/bin:/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin
+
+# Timeout until process will be killed with kill
+TIME_TO_KILL=30
+
+testForScript() {
+        if [ ! -x $1 ]; then
+                echo "Cannot find $1 executable. This file is needed"
+                echo "to run this programm. Terminating."
+                exit 1
+        fi
+}
+
+rotateLog() {
+	LOGFILE_TERMINATION_TIMESTAMP=`date "+%Y%m%d_%H%M%S"`
+	# Save the current log files by appending the current timestamp to their file names.
+	if [ -f ${PROC_MAINLOGFILE} ]; then
+		mv ${PROC_MAINLOGFILE} ${PROC_MAINLOGFILE}.${LOGFILE_TERMINATION_TIMESTAMP}
+	fi
+	touch ${PROC_MAINLOGFILE}
+	if [ -f ${APPLICATION_LOGFILE} ]; then
+		mv ${APPLICATION_LOGFILE} ${APPLICATION_LOGFILE}.${LOGFILE_TERMINATION_TIMESTAMP}
+	fi
+	touch ${APPLICATION_LOGFILE}
+}
+
+
+
+case "$1" in
+    "start")
+            if [ -r $PROC_PID ]; then
+                echo "PID file $PROC_PID present. Start command aborted."
+                echo "Is a process with PID=`cat $PROC_PID` already running ?"
+                exit 1
+	    elif [ -r ${PID_FILE} ] ; then
+                echo "PID file $PID_FILE present. Start command aborted."
+                echo "Is a process with PID=`cat $PID_FILE` already running ?"
+                exit 1
+            else
+		echo "$CLIENT_START_PORT" > "${CLIENT_HEALTH_FILE}";
+
+                running=`ps -ef | grep -v grep | grep java | grep ${PROCNAME} | grep $USER | wc -l`
+                if [ $running -gt 0 ] ; then
+                    process_name=`ps -ef | grep -v grep | grep java | grep ${PROCNAME} | grep $USER`
+                    OLDPID=`echo $process_name | $CMDAWK '{print $2;}'`
+                    echo "Old Process is currently running with pid $OLDPID - startup aborted"
+                    exit 3
+                fi
+
+                testForScript ${PROC_BIN}
+		rotateLog
+
+				${PROC_BIN} ${PROC_OPTS} >> $PROC_MAINLOGFILE 2>&1 &
+				if [ ! -z "$PROC_PID" ]; then
+                    echo $! > $PROC_PID
+				fi
+				echo "Process $PROCNAME ($PROCVERSION) started with PID `cat $PROC_PID`"
+            fi
+            ;;
+
+    "debug")
+			if [ -r $PROC_PID ]; then
+				echo "PID file $PROC_PID present. Start command aborted."
+				echo "Is a process with PID=`cat $PROC_PID` already running ?"
+				exit 1
+			else
+				echo "$CLIENT_START_PORT" > "${CLIENT_HEALTH_FILE}";
+				testForScript ${PROC_BIN}
+
+				rotateLog
+
+				${PROC_BIN} ${PROC_OPTS} -debug >> $PROC_MAINLOGFILE 2>&1 &
+				if [ ! -z "$PROC_PID" ]; then
+                    echo $! > $PROC_PID
+				fi
+				echo "Process $PROCNAME debugged with PID `cat $PROC_PID`"
+			fi
+			;;
+
+    "stop")
+            if [ ! -r $PROC_PID ]; then
+				echo "No $PROC_PID file found. Check process list manually to see if process stopped successful."
+            else
+				PID=`cat $PROC_PID`
+				LOOP=$TIME_TO_KILL
+                kill -TERM $PID
+                while [ $LOOP -gt 0 ]; do
+					ps -p $PID >/dev/null
+                    if [ $? -ne 0 ]; then
+						echo "Process $PROCNAME successfully stopped."
+                        rm -f $PROC_PID
+                        break
+                    else
+						echo "Process $PROCNAME shutdown not completed ... timeout until kill=$LOOP"
+                        sleep 1
+                    fi
+                    LOOP=$(( $LOOP - 1 ))
+                done
+                if [ -r $PROC_PID ]; then
+					echo "Process $PID still alive. Killing process $PROCNAME with kill."
+                    kill -KILL $PID
+                    echo "Removing PID file $PROC_PID"
+                    rm -f $PROC_PID
+                fi
+			fi
+	    rm -f ${PID_FILE}
+            ;;
+
+    "status")
+			if [ -r ${PROC_PID} ] ; then 
+				check_status ${PROC_PID}
+			else
+				check_status ${PID_FILE}
+			fi
+			;;
+
+    "run")
+            if [ -r $PROC_PID ]; then
+				echo "PID file $PROC_PID present. Start command aborted."
+                echo "Is a process with PID=`cat $PROC_PID` already running ?"
+                exit 1
+            else
+                # As the output goes to the console, do not output PID as like "start"
+                testForScript ${PROC_BIN}
+				rotateLog
+				${PROC_BIN} ${PROC_OPTS}
+            fi
+            ;;
+
+    *)
+            echo "wrong argument passed - terminating"
+            exit 1
+            ;;
+esac
+
+exit 0

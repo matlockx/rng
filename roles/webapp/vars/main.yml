@@ -1,0 +1,6 @@
+app_name: rng
+group_name: de.matlockx
+archive_type: tgz
+local_archive: "target/universal/rng-0.1.0.tgz"
+exec_dir: "{{ app_root }}/{{ proc_name }}"
+port: 38080

@@ -63,7 +63,6 @@ trait RngRoute extends HttpService {
   import spray.httpx.SprayJsonSupport._
 
 
-  val origin = "http://localhost:8081"
 
   val rngRoute = pathPrefix("rns") {
     getFromResourceDirectory("public") ~
