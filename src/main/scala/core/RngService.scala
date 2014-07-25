@@ -69,7 +69,7 @@ trait RngRoute extends HttpService {
     get {
       clientIP { ip =>
         parameter("amount".as[Int] ? 1) { amount =>
-          //logRequest(showRequest _) {
+           logRequest(showRequest _) {
             respondWithMediaType(`application/json`) {
               pathSuffix("long") {
                 complete {
@@ -83,7 +83,7 @@ trait RngRoute extends HttpService {
                 }
 
             }
-          //}
+           }
         }
       }
     }
